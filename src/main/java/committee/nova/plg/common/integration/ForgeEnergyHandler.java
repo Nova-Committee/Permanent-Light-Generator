@@ -1,14 +1,9 @@
 package committee.nova.plg.common.integration;
 
-import committee.nova.plg.Plg;
-import committee.nova.plg.api.energy.ITileEnergyHandler;
-import committee.nova.plg.utils.PlgUtil;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
-import net.minecraftforge.energy.CapabilityEnergy;
+import committee.nova.plg.api.energy.IEnergyHandler;
+import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.IEnergyStorage;
-
-import javax.annotation.Nonnull;
 
 /**
  * Description:
@@ -16,49 +11,41 @@ import javax.annotation.Nonnull;
  * Date: 2022/1/28 10:26
  * Version: 1.0
  */
-public class ForgeEnergyHandler implements ITileEnergyHandler {
+public class ForgeEnergyHandler implements IEnergyHandler {
 
-    public static final ForgeEnergyHandler INSTANCE = new ForgeEnergyHandler();
+    public final LazyOptional<IEnergyStorage> optional;
+    public final IEnergyStorage storage;
+    private static final double MOD_TO_FE_CONVERSION_RATE = 4.0;
 
-    private ForgeEnergyHandler() {
+    public ForgeEnergyHandler(LazyOptional<IEnergyStorage> o, IEnergyStorage s) {
+        optional = o;
+        storage = s;
     }
 
     @Override
-    public boolean hasCapability(@Nonnull TileEntity tile, @Nonnull Direction dir) {
-        return !tile.isRemoved() && tile.getCapability(CapabilityEnergy.ENERGY, dir).isPresent();
+    public boolean isEnergyHandlerInvalid() {
+        return !optional.isPresent();
     }
 
     @Override
-    public boolean canAddEnergy(@Nonnull TileEntity tile, @Nonnull Direction dir) {
-        if (!tile.isRemoved()) {
-            IEnergyStorage storage = PlgUtil.get(tile.getCapability(CapabilityEnergy.ENERGY, dir));
-            if (storage != null) {
-                return storage.canReceive();
-            }
+    public double getEnergyCapacity() {
+        return storage.getMaxEnergyStored() / MOD_TO_FE_CONVERSION_RATE;
+    }
+
+    @Override
+    public double getEnergy() {
+        return storage.getEnergyStored() / MOD_TO_FE_CONVERSION_RATE;
+    }
+
+    @Override
+    public void setEnergyRaw(double e) {
+        if (storage.getEnergyStored() <= 0 || storage.extractEnergy(storage.getEnergyStored(), false) > 0) {
+            storage.receiveEnergy(MathHelper.ceil(e * MOD_TO_FE_CONVERSION_RATE), false);
         }
-        return false;
     }
 
     @Override
-    public boolean canRemoveEnergy(@Nonnull TileEntity tile, @Nonnull Direction dir) {
-        if (!tile.isRemoved()) {
-            IEnergyStorage storage = PlgUtil.get(tile.getCapability(CapabilityEnergy.ENERGY, dir));
-            if (storage != null) {
-                return storage.canExtract();
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public long addEnergy(long amount, @Nonnull TileEntity tile, @Nonnull Direction dir, boolean simulate) {
-        IEnergyStorage storage = PlgUtil.get(tile.getCapability(CapabilityEnergy.ENERGY, dir));
-        return storage == null ? 0 : storage.receiveEnergy((int) Math.min(amount, Integer.MAX_VALUE), simulate);
-    }
-
-    @Override
-    public long removeEnergy(long amount, @Nonnull TileEntity tile, @Nonnull Direction dir) {
-        IEnergyStorage storage = PlgUtil.get(tile.getCapability(CapabilityEnergy.ENERGY, dir));
-        return storage == null ? 0 : storage.extractEnergy((int) Math.min(amount, Integer.MAX_VALUE), false);
+    public double insertEnergy(double maxInsert, boolean simulate) {
+        return storage.receiveEnergy(MathHelper.ceil(maxInsert * MOD_TO_FE_CONVERSION_RATE), simulate) / MOD_TO_FE_CONVERSION_RATE;
     }
 }

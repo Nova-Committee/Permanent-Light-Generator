@@ -41,11 +41,6 @@ public class PlgBlock extends HorizontalBlock {
     }
 
     @Override
-    public IFormattableTextComponent getName() {
-        return super.getName();
-    }
-
-    @Override
     protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.POWERED);
     }
@@ -57,10 +52,10 @@ public class PlgBlock extends HorizontalBlock {
         return defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, pContext.getHorizontalDirection().getOpposite()).setValue(BlockStateProperties.POWERED, false);
     }
 
-    @Override
-    public List<ItemStack> getDrops(BlockState pState, LootContext.Builder pBuilder) {
-        return Collections.singletonList(new ItemStack(this, 1));
-    }
+//    @Override
+//    public List<ItemStack> getDrops(BlockState pState, LootContext.Builder pBuilder) {
+//        return Collections.singletonList(new ItemStack(this, 1));
+//    }
 
     @Nullable
     @Override

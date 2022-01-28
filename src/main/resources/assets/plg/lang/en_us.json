@@ -1,0 +1,13 @@
+{
+  "itemGroup.plg": "PermanentLightGenerator",
+  "block.plg.permanentlight2": "Permanent light generator 2 FE/t",
+  "block.plg.permanentlight8": "Permanent light generator 8 FE/t",
+  "block.plg.permanentlight32": "Permanent light generator 32 FE/t",
+  "block.plg.permanentlight128": "Permanent light generator 128 FE/t",
+  "block.plg.permanentlight512": "Permanent light generator 512 FE/t",
+  "block.plg.permanentlight2048": "Permanent light generator 2048 FE/t",
+  "block.plg.permanentlight8192": "Permanent light generator 8192 FE/t",
+  "block.plg.permanentlight32768": "Permanent light generator 32768 FE/t",
+  "block.plg.permanentlight131072": "Permanent light generator 131072 FE/t",
+  "block.plg.permanentlight532480": "Permanent light generator 532480 FE/t"
+}

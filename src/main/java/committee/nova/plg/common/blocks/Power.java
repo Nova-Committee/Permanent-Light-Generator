@@ -36,11 +36,6 @@ public class Power {
         return this.production;
     }
 
-    /** 最大输出EU */
-    public int getMaxOutput() {
-        return getMaxProduction()/* /getPacket() */;
-    }
-
     /** 电压 (IC2 exp) {1=LV, 2=MV, 3=HV, 4=EV, 5=EV} */
     public int getTier() {
         return getTierFromProduction(getMaxProduction());

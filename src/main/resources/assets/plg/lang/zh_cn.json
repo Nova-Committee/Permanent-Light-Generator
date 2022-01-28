@@ -1,0 +1,13 @@
+{
+  "itemGroup.plg": "恒久光发电机",
+  "block.plg.permanentlight2": "恒久光发电机 2 FE/t",
+  "block.plg.permanentlight8": "恒久光发电机 8 FE/t",
+  "block.plg.permanentlight32": "恒久光发电机 32 FE/t",
+  "block.plg.permanentlight128": "恒久光发电机 128 FE/t",
+  "block.plg.permanentlight512": "恒久光发电机 512 FE/t",
+  "block.plg.permanentlight2048": "恒久光发电机 2048 FE/t",
+  "block.plg.permanentlight8192": "恒久光发电机 8192 FE/t",
+  "block.plg.permanentlight32768": "恒久光发电机 32768 FE/t",
+  "block.plg.permanentlight131072": "恒久光发电机 131072 FE/t",
+  "block.plg.permanentlight532480": "恒久光发电机 532480 FE/t"
+}

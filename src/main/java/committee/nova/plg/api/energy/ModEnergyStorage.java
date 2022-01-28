@@ -5,7 +5,6 @@ import net.minecraft.nbt.INBT;
 import net.minecraft.nbt.LongNBT;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.energy.IEnergyStorage;
 
 import javax.annotation.Nonnull;

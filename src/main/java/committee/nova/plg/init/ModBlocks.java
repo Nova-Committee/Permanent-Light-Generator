@@ -27,7 +27,7 @@ public class ModBlocks {
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         final IForgeRegistry<Block> registry = event.getRegistry();
 
-        PLG = RegistryUtil.registerEnumBlock(registry, PlgType.values(), it -> it + "plg", PlgBlock::new);
+        PLG = RegistryUtil.registerEnumBlock(registry, PlgType.values(), it -> it , PlgBlock::new);
 
     }
 

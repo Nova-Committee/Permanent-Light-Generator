@@ -1,7 +1,6 @@
 package committee.nova.plg.init;
 
 import committee.nova.plg.Plg;
-import committee.nova.plg.common.blocks.PlgType;
 import committee.nova.plg.common.tiles.PlgTileEntity;
 import committee.nova.plg.utils.RegistryUtil;
 import net.minecraft.tileentity.TileEntityType;
@@ -9,9 +8,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Description:
