@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "plg:block/pl32768"
+    }
+  }
+}

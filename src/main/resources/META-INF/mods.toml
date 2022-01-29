@@ -1,0 +1,10 @@
+modLoader = "javafml"
+loaderVersion = "[38,)"
+license = "AGPL v3"
+[[mods]]
+modId = "plg"
+version = "${file.jarVersion}"
+displayName = "Permanent Light Generator"
+authors = "cnlimiter, Tapio"
+description = '''
+'''
