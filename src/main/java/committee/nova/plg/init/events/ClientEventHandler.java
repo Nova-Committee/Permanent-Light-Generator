@@ -23,7 +23,7 @@ public class ClientEventHandler {
     public static void init(final FMLClientSetupEvent event) {
 
         for(PlgType plgType: PlgType.values()){
-            ClientRegistry.bindTileEntityRenderer(ModTileEntities.PLG_TILE.get(plgType).get(), PlgTileRender::new);
+            //ClientRegistry.bindTileEntityRenderer(ModTileEntities.PLG_TILE.get(plgType).get(), PlgTileRender::new);
         }
         //tile
 

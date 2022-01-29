@@ -9,5 +9,9 @@
   "block.plg.permanentlight8192": "Permanent light generator 8192 FE/t",
   "block.plg.permanentlight32768": "Permanent light generator 32768 FE/t",
   "block.plg.permanentlight131072": "Permanent light generator 131072 FE/t",
-  "block.plg.permanentlight532480": "Permanent light generator 532480 FE/t"
+  "block.plg.permanentlight532480": "Permanent light generator 532480 FE/t",
+  "message.plg.hold_shift": "Hold @b@oShift @7for details",
+  "message.plg.hold_ctrl": "Hold @b@oCtrl @7for energy stored",
+  "message.plg.shift_info": "@fGeneration: @a%d @4FE/t\n@fTransfer: @a%d @4FE/t\n@fCapacity: @a%d @4FE",
+  "message.plg.ctrl_info": "@fEnergy stored: @a%d @4FE"
 }

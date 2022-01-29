@@ -34,11 +34,12 @@ public class PlgTileEntity extends TileEntity implements ITickableTileEntity {
 
 
     /** 数据 */
-    private LazyOptional<IEnergyStorage> energy = LazyOptional.of(this::createEnergy);
-    private int energyGeneration, maxEnergyOutput;//生产 输出
+    private final LazyOptional<IEnergyStorage> energy = LazyOptional.of(this::createEnergy);
+    private final int energyGeneration;
+    private final int maxEnergyOutput;//生产 输出
     public int maxEnergy;//容量
 
-    private PlgType plgType;//种类
+    private final PlgType plgType;//种类
 
     public int energyClient, energyProductionClient;//通信同步
 

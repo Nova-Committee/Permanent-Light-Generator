@@ -50,26 +50,26 @@ public class FormatUtil {
 
     private static final Pattern COMPILE = Pattern.compile("@", Pattern.LITERAL);
 
-    public static void showInfoShift(PlgType solarPanelLevel, List<ITextComponent> tooltip)
+    public static void showInfoShift(PlgType type, List<ITextComponent> tooltip)
     {
         if(Screen.hasShiftDown())
         {
-            int generation = (int) Math.pow(8, solarPanelLevel.ordinal());
+            int generation = (int) type.getPower().getProduction();
             int transfer = generation * 2;
             int capacity = generation * 1000;
 
-            addInformationLocalized(tooltip, "message.solargeneration.shift_info", generation, transfer, capacity);
+            addInformationLocalized(tooltip, "message.plg.shift_info", generation, transfer, capacity);
         }
         else
-            addInformationLocalized(tooltip, "message.solargeneration.hold_shift");
+            addInformationLocalized(tooltip, "message.plg.hold_shift");
     }
 
     public static void showInfoCtrl(int energy, List<ITextComponent> tooltip)
     {
         if(Screen.hasControlDown())
-            addInformationLocalized(tooltip, "message.solargeneration.ctrl_info", energy);
+            addInformationLocalized(tooltip, "message.plg.ctrl_info", energy);
         else
-            addInformationLocalized(tooltip, "message.solargeneration.hold_ctrl");
+            addInformationLocalized(tooltip, "message.plg.hold_ctrl");
     }
 
     private static void addInformationLocalized(List<ITextComponent> tooltip, String key, Object... parameters)
