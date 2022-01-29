@@ -3,12 +3,14 @@ package committee.nova.plg.init;
 import committee.nova.plg.Plg;
 import committee.nova.plg.common.blocks.PlgBlock;
 import committee.nova.plg.common.blocks.PlgType;
-import committee.nova.plg.utils.RegistryUtil;
 import net.minecraft.block.Block;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Description:
@@ -16,22 +18,23 @@ import net.minecraftforge.registries.IForgeRegistry;
  * Date: 2022/1/28 11:37
  * Version: 1.0
  */
-@Mod.EventBusSubscriber(modid = Plg.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBlocks {
 
-    public static Block[] PLG;
+    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Plg.MODID);
+
+
+    public static final Map<PlgType, RegistryObject<PlgBlock>> PLG_BLOCK = new HashMap<>();
 
 
 
-    @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        final IForgeRegistry<Block> registry = event.getRegistry();
+    public static void init(){
+        BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
-        PLG = RegistryUtil.registerEnumBlock(registry, PlgType.values(), it -> it , PlgBlock::new);
+        for(PlgType plgType : PlgType.values()){
+            PLG_BLOCK.put(plgType, BLOCKS.register(plgType.getName(), () -> new PlgBlock(plgType)));
 
+        }
     }
-
-
 
 
 

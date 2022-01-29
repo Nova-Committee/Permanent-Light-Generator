@@ -1,5 +1,9 @@
 package committee.nova.plg;
 
+import committee.nova.plg.common.net.PacketHandler;
+import committee.nova.plg.init.ModBlocks;
+import committee.nova.plg.init.ModItems;
+import committee.nova.plg.init.ModTileEntities;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -13,15 +17,17 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod("plg")
 public class Plg {
 
-    // Directly reference a log4j logger.
     public static final String MODID = "plg";
     public static final Logger LOGGER = LogManager.getLogger("PLG");
 
     public Plg() {
+        ModBlocks.init();
+        ModItems.init();
+        ModTileEntities.init();
+        PacketHandler.init();
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
@@ -32,9 +38,7 @@ public class Plg {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -49,10 +53,6 @@ public class Plg {
 
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
 
-    }
 
 }

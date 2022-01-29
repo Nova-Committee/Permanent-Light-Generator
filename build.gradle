@@ -19,10 +19,10 @@ apply plugin: "idea"
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 group = 'committee.nova'
-version = '1.0'
+version = '1.1'
 
 java {
-    archivesBaseName = 'plg'
+    archivesBaseName = 'PermanentLightGenerator-forge'
     toolchain.languageVersion = JavaLanguageVersion.of(8)
 }
 tasks.withType(JavaCompile) {

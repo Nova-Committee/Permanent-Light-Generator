@@ -1,5 +1,5 @@
 {
-	"defaults": {
-		"model": "plg:block/generator/permanentlight8"
+	"variants": {
+		"model": "plg:block/permanentlight8"
 	}
 }

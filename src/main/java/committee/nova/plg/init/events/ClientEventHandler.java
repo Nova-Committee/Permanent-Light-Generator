@@ -2,6 +2,7 @@ package committee.nova.plg.init.events;
 
 import committee.nova.plg.Plg;
 import committee.nova.plg.client.render.PlgTileRender;
+import committee.nova.plg.common.blocks.PlgType;
 import committee.nova.plg.init.ModTileEntities;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,8 +22,10 @@ public class ClientEventHandler {
     @SubscribeEvent
     public static void init(final FMLClientSetupEvent event) {
 
+        for(PlgType plgType: PlgType.values()){
+            ClientRegistry.bindTileEntityRenderer(ModTileEntities.PLG_TILE.get(plgType).get(), PlgTileRender::new);
+        }
         //tile
-        ClientRegistry.bindTileEntityRenderer(ModTileEntities.PLG, PlgTileRender::new);
 
 
     }

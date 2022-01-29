@@ -21,9 +21,9 @@ public class Power {
     private final int level;
     private final int production;
 
-    public Power(final int level, final int power) {
+    public Power(final int level, final int production) {
         this.level = level;
-        this.production = power;
+        this.production = production;
     }
 
     /** 发电等级 */
@@ -32,13 +32,13 @@ public class Power {
     }
 
     /** 最大产出EU / Tick */
-    public int getMaxProduction() {
+    public int getProduction() {
         return this.production;
     }
 
     /** 电压 (IC2 exp) {1=LV, 2=MV, 3=HV, 4=EV, 5=EV} */
     public int getTier() {
-        return getTierFromProduction(getMaxProduction());
+        return getTierFromProduction(getProduction());
     }
 
     /** 総電力 → 電圧 (IC2 exp) {1=LV, 2=MV, 3=HV, 4=EV, 5=EV} */
