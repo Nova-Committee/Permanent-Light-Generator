@@ -85,7 +85,9 @@ public class PlgTileEntity extends TileEntity implements ITickableTileEntity {
 
     private int currentAmountEnergyProduced()
     {
-        return (int) (energyGeneration * PlgUtil.computeSunIntensity(level, worldPosition, plgType));
+        return (int) (energyGeneration
+               // * PlgUtil.computeSunIntensity(level, worldPosition, plgType)//删除环境限制
+        );
     }
 
     private void sendEnergy()
