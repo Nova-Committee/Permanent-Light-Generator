@@ -43,12 +43,16 @@ public class PlgBlock extends Block implements IWaterLoggable {
 
     private final PlgType type;//种类
     private static final ResourceLocation WRENCH = new ResourceLocation("forge", "wrench");//通用扳手
-    private static final BooleanProperty WATERLOGGED = BooleanProperty.create("waterlogged");
+    private static final BooleanProperty WATERLOGGED = BooleanProperty.create("waterlogged");//含水方块？
 
 
 
     public PlgBlock(PlgType plgType) {
-        super(Properties.of(Material.METAL).noOcclusion().strength(3F, 10F).sound(SoundType.METAL));
+        super(Properties.of(Material.METAL)
+                .noOcclusion()
+                .strength(3F, 10F)
+                .sound(SoundType.METAL)
+        );
         this.registerDefaultState(defaultBlockState().setValue(WATERLOGGED, false));
         this.type = plgType;
     }
@@ -61,6 +65,7 @@ public class PlgBlock extends Block implements IWaterLoggable {
     @Override
     public ActionResultType use(BlockState pState, World pLevel, BlockPos pPos, PlayerEntity pPlayer, Hand pHand, BlockRayTraceResult pHit) {
         if(!pLevel.isClientSide) {
+            //使用扳手
             if (pPlayer.isCrouching()) {
                 if (pPlayer.getMainHandItem().getItem().getTags().contains(WRENCH)) {
                     dismantleBlock(pLevel, pPos);

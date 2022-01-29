@@ -52,12 +52,16 @@ public class PlgTileEntity extends TileEntity implements ITickableTileEntity {
         this.energyClient = energyProductionClient = -1;
     }
 
+    public PlgType getPlgType() {
+        return plgType;
+    }
+
     private int getMaxEnergy()
     {
         return getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getMaxEnergyStored).orElse(0);
     }
 
-    private int getEnergy()
+    public int getEnergy()
     {
         return getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
     }
