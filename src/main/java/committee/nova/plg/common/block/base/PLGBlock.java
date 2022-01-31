@@ -87,7 +87,7 @@ public class PLGBlock extends Block implements EntityBlock, SimpleWaterloggedBlo
     }
 
     @Override
-    public void playerDestroy(@Nonnull Level worldIn, @Nonnull Player player, BlockPos pos, @Nonnull BlockState state, BlockEntity te, @Nonnull ItemStack stack) {
+    public void playerDestroy(@Nonnull Level worldIn, @Nonnull Player player, @Nonnull BlockPos pos, @Nonnull BlockState state, BlockEntity te, @Nonnull ItemStack stack) {
         super.playerDestroy(worldIn, player, pos, state, te, stack);
         worldIn.removeBlock(pos, false);
     }

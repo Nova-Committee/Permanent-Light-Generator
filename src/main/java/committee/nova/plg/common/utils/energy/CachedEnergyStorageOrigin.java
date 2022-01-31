@@ -6,5 +6,5 @@ import net.minecraft.core.Direction;
 public class CachedEnergyStorageOrigin {
     public Direction direction;
     public BlockPos cablePos = null;
-    public boolean cableBurnt = false;
+    public final boolean cableBurnt = false;
 }

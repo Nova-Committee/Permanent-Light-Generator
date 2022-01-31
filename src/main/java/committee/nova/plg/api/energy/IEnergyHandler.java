@@ -18,7 +18,7 @@ public interface IEnergyHandler {
     double getEnergy();
 
     default void setEnergy(double energy) {
-        double prev = getEnergy();
+        final double prev = getEnergy();
 
         if (prev != energy) {
             setEnergyRaw(energy);
@@ -38,7 +38,7 @@ public interface IEnergyHandler {
             return 0D;
         }
 
-        double max = getMaxInputEnergy();
+        final double max = getMaxInputEnergy();
 
         if (max <= 0D) {
             return 0;
@@ -52,8 +52,8 @@ public interface IEnergyHandler {
             return maxInsert;
         }
 
-        double energy = getEnergy();
-        double energyReceived = Math.min(getEnergyCapacity() - energy, Math.min(max, maxInsert));
+        final double energy = getEnergy();
+        final double energyReceived = Math.min(getEnergyCapacity() - energy, Math.min(max, maxInsert));
 
         if (!simulate && energyReceived > 0D) {
             setEnergyRaw(energy + energyReceived);

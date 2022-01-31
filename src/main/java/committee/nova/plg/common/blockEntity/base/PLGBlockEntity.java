@@ -23,7 +23,7 @@ public class PLGBlockEntity extends BlockEntity {
     private final int energyGeneration;
     private final int maxEnergyOutput;//生产 输出
     private final PLGType plgType;//种类
-    public int maxEnergy;//容量
+    public final int maxEnergy;//容量
     /**
      * 数据
      */
@@ -51,6 +51,7 @@ public class PLGBlockEntity extends BlockEntity {
         return getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
     }
 
+    @Nonnull
     private PLGEnergyStorage createEnergy() {
         return new PLGEnergyStorage(maxEnergyOutput, maxEnergy);
     }
