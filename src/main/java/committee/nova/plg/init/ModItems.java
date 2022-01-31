@@ -30,10 +30,9 @@ public class ModItems {
 
     public static void init(){
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-
-        for(PlgType plgType : PlgType.values()){
+        final PlgType[] types = PlgType.values();
+        for (PlgType plgType : types) {
             PLG_ITEM.put(plgType, ITEMS.register(plgType.getName(), () -> new BlockItem(ModBlocks.PLG_BLOCK.get(plgType).get(), property)));
-
         }
     }
 

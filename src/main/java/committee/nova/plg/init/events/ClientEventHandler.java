@@ -23,13 +23,10 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void init(final FMLClientSetupEvent event) {
-
-        for(PlgType plgType: PlgType.values()){
+        final PlgType[] types = PlgType.values();
+        for (PlgType plgType : types) {
             //ClientRegistry.bindTileEntityRenderer(ModTileEntities.PLG_TILE.get(plgType).get(), PlgTileRender::new);
             RenderTypeLookup.setRenderLayer(ModBlocks.PLG_BLOCK.get(plgType).get(), RenderType.cutout());
         }
-
-
-
     }
 }

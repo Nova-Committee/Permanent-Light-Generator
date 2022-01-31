@@ -1,5 +1,6 @@
 package committee.nova.plg.init;
 
+import com.mojang.datafixers.DSL;
 import committee.nova.plg.Plg;
 import committee.nova.plg.common.blocks.PlgType;
 import committee.nova.plg.common.tiles.PlgTileEntity;
@@ -25,12 +26,11 @@ public class ModTileEntities {
     public static final Map<PlgType, RegistryObject<TileEntityType<PlgTileEntity>>> PLG_TILE = new HashMap<>();
 
 
-    public static void init(){
+    public static void init() {
         TILES.register(FMLJavaModLoadingContext.get().getModEventBus());
-
-        for(PlgType plgType : PlgType.values()){
-            PLG_TILE.put(plgType, TILES.register(plgType.getName(), () -> TileEntityType.Builder.of(() -> new PlgTileEntity(plgType), ModBlocks.PLG_BLOCK.get(plgType).get()).build(null)));
-
+        final PlgType[] types = PlgType.values();
+        for (PlgType plgType : types) {
+            PLG_TILE.put(plgType, TILES.register(plgType.getName(), () -> TileEntityType.Builder.of(() -> new PlgTileEntity(plgType), ModBlocks.PLG_BLOCK.get(plgType).get()).build(DSL.remainderType())));
         }
     }
 

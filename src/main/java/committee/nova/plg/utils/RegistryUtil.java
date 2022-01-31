@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 public class RegistryUtil {
 
     public static <T extends Enum<T> & IStringSerializable> Block[] registerEnumBlock(IForgeRegistry<Block> registry, T[] types, Function<String, String> nameFactory, Function<T, Block> factory) {
-        Block[] blocks = new Block[types.length];
+        final Block[] blocks = new Block[types.length];
         for (T type : types) {
             blocks[type.ordinal()] = factory.apply(type).setRegistryName(nameFactory.apply(type.getSerializedName()));
         }

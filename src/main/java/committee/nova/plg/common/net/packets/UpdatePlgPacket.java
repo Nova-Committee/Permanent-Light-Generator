@@ -49,12 +49,10 @@ public class UpdatePlgPacket extends IPacket {
     @Override
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            World world = Minecraft.getInstance().level;
-            if(world.isLoaded(pos))
-            {
+            final World world = Minecraft.getInstance().level;
+            if (world != null && world.isLoaded(pos)) {
                 TileEntity te = world.getBlockEntity(pos);
-                if(te instanceof PlgTileEntity)
-                {
+                if (te instanceof PlgTileEntity) {
                     PlgTileEntity solar = (PlgTileEntity) te;
                     solar.energyClient = currentEnergy;
                     solar.energyProductionClient = currentProduction;

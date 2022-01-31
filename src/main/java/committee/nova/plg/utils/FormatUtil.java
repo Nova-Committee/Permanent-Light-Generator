@@ -33,8 +33,8 @@ public class FormatUtil {
         if (in < 1000) {
             return Long.toString(in);
         }
-        int level = (int) (Math.log10(in) / 3) - 1;
-        char pre = "kMGTPE".charAt(level);//k- 千，m- 兆。。。
+        final int level = (int) (Math.log10(in) / 3) - 1;
+        final char pre = "kMGTPE".charAt(level);//k- 千，m- 兆。。。
         return String.format("%.1f%c", in * COMPACT_SCALE[level], pre);
     }
 
@@ -42,8 +42,8 @@ public class FormatUtil {
         if (in < 1000) {
             return in + " " + suffix;
         }
-        int level = (int) (Math.log10(in) / 3) - 1;
-        char pre = "kMGTPE".charAt(level);
+        final int level = (int) (Math.log10(in) / 3) - 1;
+        final char pre = "kMGTPE".charAt(level);
         return String.format("%.1f %c%s", in * COMPACT_SCALE[level], pre, suffix);
     }
 
@@ -52,11 +52,10 @@ public class FormatUtil {
 
     public static void showInfoShift(PlgType type, List<ITextComponent> tooltip)
     {
-        if(Screen.hasShiftDown())
-        {
-            int generation = (int) type.getPower().getProduction();
-            int transfer = generation * 2;
-            int capacity = generation * 1000;
+        if(Screen.hasShiftDown()) {
+            final int generation = (int) type.getPower().getProduction();
+            final int transfer = generation * 2;
+            final int capacity = generation * 1000;
 
             addInformationLocalized(tooltip, "message.plg.shift_info", generation, transfer, capacity);
         }
@@ -72,12 +71,10 @@ public class FormatUtil {
             addInformationLocalized(tooltip, "message.plg.hold_ctrl");
     }
 
-    private static void addInformationLocalized(List<ITextComponent> tooltip, String key, Object... parameters)
-    {
-        String translated = I18n.get(key, parameters);
-        translated = COMPILE.matcher(translated).replaceAll("\u00a7");
-        String[] formatted = translated.split("\n");
-        for(String line : formatted)
+    private static void addInformationLocalized(List<ITextComponent> tooltip, String key, Object... parameters) {
+        final String translated = COMPILE.matcher(I18n.get(key, parameters)).replaceAll("\u00a7");
+        final String[] formatted = translated.split("\n");
+        for (String line : formatted)
             tooltip.add(new TranslationTextComponent(line));
     }
 }
