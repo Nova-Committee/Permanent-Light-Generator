@@ -50,16 +50,14 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
     }
 
     @Override
-    public CompoundNBT serializeNBT()
-    {
-        CompoundNBT tag = new CompoundNBT();
+    public CompoundNBT serializeNBT() {
+        final CompoundNBT tag = new CompoundNBT();
         tag.putInt("value", getEnergyStored());
         return tag;
     }
 
-    @Override
-    public void deserializeNBT(CompoundNBT nbt)
-    {
-        setEnergy(nbt.getInt("value"));
+    public void deserializeNBT(CompoundNBT tag) {
+        setEnergy(tag.getInt("energy"));
     }
+
 }

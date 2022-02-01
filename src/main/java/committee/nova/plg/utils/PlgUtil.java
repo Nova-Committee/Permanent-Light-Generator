@@ -25,36 +25,14 @@ public class PlgUtil {
 
     public static float computeSunIntensity(World world, BlockPos pos, PlgType type)
     {
-        float sunIntensity = 0;
-
-        if(world.canSeeSkyFromBelowWater(pos))
-        {
-            float multiplicator = 1.5f;
-            float displacement = 1.2f;
-            // Celestial angle == 0 at zenith.
-            float celestialAngleRadians = world.getSunAngle(1.0f);
-            if(celestialAngleRadians > Math.PI)
-            {
-                celestialAngleRadians = (2 * 3.141592f - celestialAngleRadians);
-            }
-
-            sunIntensity = multiplicator * MathHelper.cos(celestialAngleRadians / displacement);
-            sunIntensity = Math.max(0, sunIntensity);
-            sunIntensity = Math.min(1, sunIntensity);
-
-            if(sunIntensity > 0)
-            {
-                if(type == PlgType.PermanentLight2)
-                    sunIntensity = 1;
-
-                if(world.isRaining())
-                    sunIntensity *= 0.4;
-
-                if(world.isThundering())
-                    sunIntensity *= 0.2;
-            }
+        if (!world.canSeeSkyFromBelowWater(pos)) {
+            return 0;
         }
-
-        return sunIntensity;
+        final float angle = world.getSunAngle(1.0f);
+        final float celestialAngleRadians = (angle > Math.PI) ? (2 * 3.141592f - angle) : angle;
+        final float rawIntensity1 = 1.5F * MathHelper.cos(celestialAngleRadians / 1.2F);
+        final float rawIntensity2 = (rawIntensity1 < 0) ? 0 : ((rawIntensity1 > 1) ? 1 : rawIntensity1);
+        final float rawIntensity3 = (rawIntensity2 > 0 && type == PlgType.PermanentLight2) ? 1 : rawIntensity2;
+        return rawIntensity3 * ((world.isRaining()) ? 0.4F : 1.0F) * ((world.isThundering()) ? 0.2F : 1.0F);
     }
 }

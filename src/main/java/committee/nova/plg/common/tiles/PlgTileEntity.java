@@ -5,7 +5,6 @@ import committee.nova.plg.common.blocks.PlgType;
 import committee.nova.plg.common.net.PacketHandler;
 import committee.nova.plg.common.net.packets.UpdatePlgPacket;
 import committee.nova.plg.init.ModTileEntities;
-import committee.nova.plg.utils.PlgUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -66,20 +65,18 @@ public class PlgTileEntity extends TileEntity implements ITickableTileEntity {
         return getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
     }
 
-    private IEnergyStorage createEnergy()
-    {
+    @Nonnull
+    private IEnergyStorage createEnergy() {
         return new ModEnergyStorage(maxEnergyOutput, maxEnergy);
     }
 
     @Override
     public void tick()
     {
-        if(!level.isClientSide)
-        {
+        if (level != null && !level.isClientSide) {
             energy.ifPresent(e -> ((ModEnergyStorage) e).generatePower(currentAmountEnergyProduced()));
             sendEnergy();
-            if(energyClient != getEnergy() || energyProductionClient != currentAmountEnergyProduced())
-            {
+            if (energyClient != getEnergy() || energyProductionClient != currentAmountEnergyProduced()) {
                 int energyProduced = (getEnergy() != getMaxEnergy()) ? currentAmountEnergyProduced() : 0;
                 PacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new UpdatePlgPacket(getBlockPos(), getEnergy(), energyProduced));
             }
@@ -97,20 +94,16 @@ public class PlgTileEntity extends TileEntity implements ITickableTileEntity {
     private void sendEnergy()
     {
         energy.ifPresent(energy -> {
-            AtomicInteger capacity = new AtomicInteger(energy.getEnergyStored());
+            final AtomicInteger capacity = new AtomicInteger(energy.getEnergyStored());
 
-            for(int i = 0; (i < Direction.values().length) && (capacity.get() > 0); i++)
-            {
-                Direction facing = Direction.values()[i];
-                if(facing != Direction.UP)
-                {
-                    TileEntity tileEntity = level.getBlockEntity(worldPosition.relative(facing));
-                    if(tileEntity != null)
-                    {
+            for (int i = 0; (i < Direction.values().length) && (capacity.get() > 0); i++) {
+                final Direction facing = Direction.values()[i];
+                if (facing != Direction.UP) {
+                    final TileEntity tileEntity = (level != null) ? level.getBlockEntity(worldPosition.relative(facing)) : null;
+                    if (tileEntity != null) {
                         tileEntity.getCapability(CapabilityEnergy.ENERGY, facing.getOpposite()).ifPresent(handler -> {
-                            if(handler.canReceive())
-                            {
-                                int received = handler.receiveEnergy(Math.min(capacity.get(), maxEnergyOutput), false);
+                            if (handler.canReceive()) {
+                                final int received = handler.receiveEnergy(Math.min(capacity.get(), maxEnergyOutput), false);
                                 capacity.addAndGet(-received);
                                 ((ModEnergyStorage) energy).consumePower(received);
                             }
@@ -121,11 +114,10 @@ public class PlgTileEntity extends TileEntity implements ITickableTileEntity {
         });
     }
 
+    @Nonnull
     @Override
-    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, Direction facing)
-    {
-        if(capability == CapabilityEnergy.ENERGY && facing != Direction.UP)
-        {
+    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, Direction facing) {
+        if(capability == CapabilityEnergy.ENERGY && facing != Direction.UP) {
             return energy.cast();
         }
         return super.getCapability(capability, facing);
@@ -133,14 +125,14 @@ public class PlgTileEntity extends TileEntity implements ITickableTileEntity {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void load(BlockState state, CompoundNBT compound)
-    {
-        CompoundNBT energyTag = compound.getCompound("energy");
+    public void load(@Nonnull BlockState state, CompoundNBT compound) {
+        final CompoundNBT energyTag = compound.getCompound("energy");
         energy.ifPresent(h -> ((INBTSerializable<CompoundNBT>) h).deserializeNBT(energyTag));
         super.load(state, compound);
     }
 
     @SuppressWarnings("unchecked")
+    @Nonnull
     @Override
     public CompoundNBT save(CompoundNBT compound)
     {

@@ -1,9 +1,11 @@
 package committee.nova.plg.init;
 
 import committee.nova.plg.Plg;
+import committee.nova.plg.common.blocks.PlgType;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+
+import javax.annotation.Nonnull;
 
 /**
  * Description:
@@ -19,10 +21,9 @@ public class ModItemGroups extends ItemGroup {
 
     public static final ModItemGroups INSTANCE = new ModItemGroups();
 
+    @Nonnull
     @Override
     public ItemStack makeIcon() {
-        return new ItemStack(Items.DIRT);
+        return new ItemStack(ModBlocks.PLG_BLOCK.get(PlgType.PermanentLight532480).get());
     }
-
-
 }

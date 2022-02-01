@@ -29,10 +29,9 @@ public class ModBlocks {
 
     public static void init(){
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-
-        for(PlgType plgType : PlgType.values()){
+        final PlgType[] types = PlgType.values();
+        for (PlgType plgType : types) {
             PLG_BLOCK.put(plgType, BLOCKS.register(plgType.getName(), () -> new PlgBlock(plgType)));
-
         }
     }
 

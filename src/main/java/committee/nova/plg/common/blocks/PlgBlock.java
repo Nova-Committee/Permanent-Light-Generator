@@ -30,6 +30,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -90,17 +91,15 @@ public class PlgBlock extends Block implements IWaterLoggable {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable IBlockReader pLevel, List<ITextComponent> pTooltip, ITooltipFlag pFlag) {
-        CompoundNBT compoundnbt = pStack.getTagElement("BlockEntityTag");
-        int energy = 0;
-        if(compoundnbt != null)
-            if(compoundnbt.contains("energy"))
-                energy = compoundnbt.getCompound("energy").getInt("value");
+        final CompoundNBT compoundnbt = pStack.getTagElement("BlockEntityTag");
+        final int energy = (compoundnbt != null && compoundnbt.contains("energy")) ? compoundnbt.getCompound("energy").getInt("value") : 0;
 
         FormatUtil.showInfoCtrl(energy, pTooltip);
         FormatUtil.showInfoShift(this.type, pTooltip);
     }
 
     @SuppressWarnings("deprecation")
+    @Nonnull
     @Override
     public FluidState getFluidState(BlockState state)
     {
@@ -108,20 +107,17 @@ public class PlgBlock extends Block implements IWaterLoggable {
     }
 
     @Override
-    public boolean placeLiquid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn)
-    {
+    public boolean placeLiquid(@Nonnull IWorld worldIn, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull FluidState fluidStateIn) {
         return IWaterLoggable.super.placeLiquid(worldIn, pos, state, fluidStateIn);
     }
 
     @Override
-    public boolean canPlaceLiquid(IBlockReader worldIn, BlockPos pos, BlockState state, Fluid fluidIn)
-    {
+    public boolean canPlaceLiquid(@Nonnull IBlockReader worldIn, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull Fluid fluidIn) {
         return IWaterLoggable.super.canPlaceLiquid(worldIn, pos, state, fluidIn);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
-    {
+    protected void createBlockStateDefinition(@Nonnull StateContainer.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(WATERLOGGED);
     }
@@ -139,14 +135,12 @@ public class PlgBlock extends Block implements IWaterLoggable {
     }
 
 
-    private void dismantleBlock(World worldIn, BlockPos pos)
-    {
-        ItemStack itemStack = new ItemStack(this);
+    private void dismantleBlock(World worldIn, BlockPos pos) {
+        final ItemStack itemStack = new ItemStack(this);
 
-        PlgTileEntity localTileEntity = (PlgTileEntity) worldIn.getBlockEntity(pos);
-        int internalEnergy = localTileEntity.getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
-        if(internalEnergy > 0)
-        {
+        final PlgTileEntity localTileEntity = (PlgTileEntity) worldIn.getBlockEntity(pos);
+        final int internalEnergy = localTileEntity.getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
+        if (internalEnergy > 0) {
             CompoundNBT energyValue = new CompoundNBT();
             energyValue.putInt("value", internalEnergy);
 
@@ -160,7 +154,7 @@ public class PlgBlock extends Block implements IWaterLoggable {
 
         worldIn.removeBlock(pos, false);
 
-        ItemEntity entityItem = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack);
+        final ItemEntity entityItem = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack);
 
         entityItem.setDeltaMovement(0, entityItem.getMyRidingOffset(), 0);
         worldIn.addFreshEntity(entityItem);
