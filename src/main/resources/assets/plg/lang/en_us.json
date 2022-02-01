@@ -1,5 +1,6 @@
 {
   "itemGroup.plg.main": "Permanent Light Generator",
+
   "block.plg.pl2": "Permanent Light Generator 2 E/t",
   "block.plg.pl8": "Permanent Light Generator 8 E/t",
   "block.plg.pl32": "Permanent Light Generator 32 E/t",
@@ -10,8 +11,10 @@
   "block.plg.pl32768": "Permanent Light Generator 32768 E/t",
   "block.plg.pl131072": "Permanent Light Generator 131072 E/t",
   "block.plg.pl532480": "Permanent Light Generator 532480 E/t",
+
   "plg.tooltip.more_info_shift": "Hold Shift for details",
   "plg.tooltip.more_info_ctrl": "Hold Ctrl for energy info",
+
   "plg.message.info.pl2_1": "Generation: 2 E/t\nTransfer: 4 E/t\nCapacity: 2000 E",
   "plg.message.info.pl8_1": "Generation: 8 E/t\nTransfer: 16 E/t\nCapacity: 8000 E",
   "plg.message.info.pl32_1": "Generation: 32 E/t\nTransfer: 64 E/t\nCapacity: 32000 E",

@@ -1,5 +1,6 @@
 {
   "itemGroup.plg.main": "恒久光发电机",
+
   "block.plg.pl2": "恒久光发电机 2 E/t",
   "block.plg.pl8": "恒久光发电机 8 E/t",
   "block.plg.pl32": "恒久光发电机 32 E/t",
@@ -10,8 +11,10 @@
   "block.plg.pl32768": "恒久光发电机 32768 E/t",
   "block.plg.pl131072": "恒久光发电机 131072 E/t",
   "block.plg.pl532480": "恒久光发电机 532480 E/t",
+
   "plg.tooltip.more_info_shift": "按住 Shift 获取详细信息",
   "plg.tooltip.more_info_ctrl": "按住 Ctrl 获取能量存储信息",
+
   "plg.message.info.pl2_1": "发电量：2 E/t\n能量传输速率: 4 E/t\n容量: 2000 E",
   "plg.message.info.pl8_1": "发电量：8 E/t\n能量传输速率: 16 E/t\n容量: 8000 E",
   "plg.message.info.pl32_1": "发电量：32 E/t\n能量传输速率: 64 E/t\n容量: 32000 E",

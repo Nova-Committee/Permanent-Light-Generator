@@ -2,25 +2,29 @@
   "schemaVersion": 1,
   "id": "plg",
   "version": "${version}",
+
   "name": "Permanent Light Generator",
   "description": "Solar generators packed up are not enough.",
   "authors": [
+    "MikhailTapio",
     "cnlimiter",
-    "Peakstep",
-    "MikhailTapio"
+    "pkstDev a.k.a. Peakstep"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/permanent-light-generator",
     "sources": "https://github.com/Nova-Committee/Permanent-Light-Generator"
   },
-  "license": "AGPL v3",
+
+  "license": "MIT License",
   "icon": "assets/plg/icon.png",
+
   "environment": "*",
   "entrypoints": {
     "main": [
       "committee.nova.plg.PLG"
     ]
   },
+
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
