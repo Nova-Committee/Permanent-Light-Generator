@@ -3,11 +3,9 @@ package committee.nova.plg.common.block.impl;
 import committee.nova.plg.common.blockentity.impl.PL532480BlockEntity;
 import committee.nova.plg.common.blockentity.init.PLGBlockEntityInit;
 import committee.nova.plg.common.utils.FormattingUtils;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -21,8 +19,8 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class PL532480Block extends BlockWithEntity {
-    public PL532480Block() {
-        super(FabricBlockSettings.of(Material.METAL).strength(4.0f));
+    public PL532480Block(Settings settings) {
+        super(settings);
     }
 
     @Override
