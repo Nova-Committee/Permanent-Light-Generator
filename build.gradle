@@ -25,6 +25,14 @@ dependencies {
     include modApi("teamreborn:energy:2.1.0") {
         exclude(group: "net.fabricmc.fabric-api")
     }
+
+    // for testing purpose
+    modRuntimeOnly ("TechReborn:TechReborn-${project.tr_version}") {
+        exclude group: "net.fabricmc.fabric-api" exclude group: "RebornCore"
+    }
+    modRuntimeOnly ("RebornCore:RebornCore-${project.rc_version}") {
+        exclude group: "net.fabricmc.fabric-api"
+    }
 }
 
 processResources {

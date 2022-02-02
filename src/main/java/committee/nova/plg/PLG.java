@@ -1,8 +1,6 @@
 package committee.nova.plg;
 
-import committee.nova.plg.common.registry.BlockEntityRegistry;
-import committee.nova.plg.common.registry.BlockRegistry;
-import committee.nova.plg.common.registry.ItemRegistry;
+import committee.nova.plg.common.registry.*;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,6 +13,7 @@ public class PLG implements ModInitializer {
 		BlockRegistry.register();
 		ItemRegistry.register();
 		BlockEntityRegistry.register();
+		RecipeRegistry.register();
 		LOGGER.info("Initialized.");
 	}
 }
