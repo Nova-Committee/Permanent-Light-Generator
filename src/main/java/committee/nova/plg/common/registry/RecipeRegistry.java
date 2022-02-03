@@ -170,7 +170,7 @@ public class RecipeRegistry {
                             '='
                     ), //The keys we are using for the input items/tags.
                     Lists.newArrayList(new Identifier("minecraft", "dragon_egg"), new Identifier("minecraft","nether_star"), new Identifier("minecraft","amethyst_block"), new Identifier("minecraft","netherite_block")), //The items/tags we are using as input.
-                    Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
+                    Lists.newArrayList("item", "item", "item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "---",
                             "#|#",
@@ -218,7 +218,7 @@ public class RecipeRegistry {
                             "#|#",
                             "|#|"
                     ), //The crafting pattern.
-                    new Identifier("plg:128") //The crafting output
+                    new Identifier("plg:pl128") //The crafting output
             );
             PL512_RECIPE = createShapedRecipeJson(
                     Lists.newArrayList(

@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "plg:pl2",
+    "plg:pl8",
+    "plg:pl32",
+    "plg:pl128",
+    "plg:pl512",
+    "plg:pl2048",
+    "plg:pl8192",
+    "plg:pl32768",
+    "plg:pl131072",
+    "plg:pl532480"
+  ]
+}
