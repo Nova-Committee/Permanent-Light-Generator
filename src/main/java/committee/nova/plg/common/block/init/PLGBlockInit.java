@@ -2,7 +2,6 @@ package committee.nova.plg.common.block.init;
 
 import committee.nova.plg.common.block.impl.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Material;
 
 public class PLGBlockInit {

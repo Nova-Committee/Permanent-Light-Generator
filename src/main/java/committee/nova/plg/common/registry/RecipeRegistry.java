@@ -2,6 +2,7 @@ package committee.nova.plg.common.registry;
 
 import com.google.common.collect.Lists;
 import com.google.gson.JsonObject;
+import committee.nova.plg.PLG;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
 
@@ -26,7 +27,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("techreborn", "quantum_solar_panel"), new Identifier("techreborn","lapotronic_orb")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier("techreborn", "quantum_solar_panel"), new Identifier("techreborn", "lapotronic_orb")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             " # ",
@@ -40,7 +41,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl2"), new Identifier("techreborn","superconductor")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl2"), new Identifier("techreborn", "superconductor")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -54,7 +55,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl8"), new Identifier("techreborn","superconductor")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl8"), new Identifier("techreborn", "superconductor")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -68,7 +69,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl32"), new Identifier("techreborn","superconductor")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl32"), new Identifier("techreborn", "superconductor")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -82,7 +83,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl128"), new Identifier("techreborn","superconductor")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl128"), new Identifier("techreborn", "superconductor")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -96,7 +97,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl512"), new Identifier("techreborn","superconductor")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl512"), new Identifier("techreborn", "superconductor")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -110,7 +111,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl2048"), new Identifier("techreborn","superconductor")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl2048"), new Identifier("techreborn", "superconductor")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -124,7 +125,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl8192"), new Identifier("techreborn","superconductor")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl8192"), new Identifier("techreborn", "superconductor")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -138,7 +139,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl32768"), new Identifier("techreborn","superconductor")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl32768"), new Identifier("techreborn", "superconductor")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -152,7 +153,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl131072"), new Identifier("techreborn","superconductor_cable")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl131072"), new Identifier("techreborn", "superconductor_cable")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -169,7 +170,7 @@ public class RecipeRegistry {
                             '-',
                             '='
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("minecraft", "dragon_egg"), new Identifier("minecraft","nether_star"), new Identifier("minecraft","amethyst_block"), new Identifier("minecraft","netherite_block")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier("minecraft", "dragon_egg"), new Identifier("minecraft", "nether_star"), new Identifier("minecraft", "amethyst_block"), new Identifier("minecraft", "netherite_block")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item", "item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "---",
@@ -183,7 +184,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl2"), new Identifier("minecraft","dragon_egg")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl2"), new Identifier("minecraft", "dragon_egg")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -197,7 +198,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl8"), new Identifier("minecraft","dragon_egg")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl8"), new Identifier("minecraft", "dragon_egg")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -211,7 +212,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl32"), new Identifier("minecraft","dragon_egg")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl32"), new Identifier("minecraft", "dragon_egg")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -225,7 +226,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl128"), new Identifier("minecraft","dragon_egg")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl128"), new Identifier("minecraft", "dragon_egg")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -239,7 +240,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl512"), new Identifier("minecraft","dragon_egg")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl512"), new Identifier("minecraft", "dragon_egg")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -253,7 +254,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl2048"), new Identifier("minecraft","dragon_egg")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl2048"), new Identifier("minecraft", "dragon_egg")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -267,7 +268,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl8192"), new Identifier("minecraft","dragon_egg")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl8192"), new Identifier("minecraft", "dragon_egg")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -281,7 +282,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl32768"), new Identifier("minecraft","dragon_egg")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl32768"), new Identifier("minecraft", "dragon_egg")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
@@ -295,7 +296,7 @@ public class RecipeRegistry {
                             '#',
                             '|'
                     ), //The keys we are using for the input items/tags.
-                    Lists.newArrayList(new Identifier("plg", "pl131072"), new Identifier("minecraft","dragon_egg")), //The items/tags we are using as input.
+                    Lists.newArrayList(new Identifier(PLG.MODID, "pl131072"), new Identifier("minecraft", "dragon_egg")), //The items/tags we are using as input.
                     Lists.newArrayList("item", "item"), //Whether the input we provided is a tag or an item.
                     Lists.newArrayList(
                             "|#|",
