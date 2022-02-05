@@ -18,12 +18,12 @@ public class FormattingUtils {
     }
 
     public static void addInfo(String inKey, List<Text> list, boolean hidden, boolean useShift) {
-        String key = ("plg.message.info." + inKey);
+        final String key = ("plg.message.info." + inKey);
         if (useShift) {
             if (I18n.hasTranslation(key)) {
                 if (!hidden || Screen.hasShiftDown()) {
-                    String info = I18n.translate(key);
-                    String[] infoLines = info.split("\\r?\\n");
+                    final String info = I18n.translate(key);
+                    final String[] infoLines = info.split("\\r?\\n");
 
                     for (String infoLine : infoLines) {
                         list.add(1, new LiteralText(infoColour + infoLine));
@@ -35,8 +35,8 @@ public class FormattingUtils {
         } else {
             if (I18n.hasTranslation(key)) {
                 if (!hidden || Screen.hasControlDown()) {
-                    String info = I18n.translate(key);
-                    String[] infoLines = info.split("\\r?\\n");
+                    final String info = I18n.translate(key);
+                    final String[] infoLines = info.split("\\r?\\n");
 
                     for (String infoLine : infoLines) {
                         list.add(1, new LiteralText(infoColour + infoLine));

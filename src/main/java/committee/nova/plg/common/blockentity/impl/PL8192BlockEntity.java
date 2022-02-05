@@ -27,14 +27,15 @@ public class PL8192BlockEntity extends BlockEntity {
     };
 
     public static void tick(World world, BlockPos pos, BlockState state, PL8192BlockEntity be) {
-        assert world != null;
+        if (world == null) {
+            return;
+        }
         if (!world.isClient && be.energyStorage.amount <= be.capacity) {
             be.energyStorage.amount += be.generation;
             try (Transaction transaction = Transaction.openOuter()) {
-                long amountExtracted = be.energyStorage.extract(be.maxExtract, transaction);
+                final long amountExtracted = be.energyStorage.extract(be.maxExtract, transaction);
                 if (amountExtracted == be.maxExtract) {
                     transaction.commit();
-                } else {
                 }
             }
             be.markDirty();
