@@ -20,8 +20,8 @@ public class DynamicRecipeUtil {
         json.add("pattern", jsonArray);
 
         final JsonObject keyList = new JsonObject();
-
-        for (int i = 0; i < keys.size(); ++i) {
+        final int size = keys.size();
+        for (int i = 0; i < size; ++i) {
             final JsonObject individualKey = new JsonObject();
             individualKey.addProperty(type.get(i), items.get(i).toString());
             keyList.add(keys.get(i) + "", individualKey);
