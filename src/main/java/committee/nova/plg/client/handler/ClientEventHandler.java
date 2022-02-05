@@ -22,7 +22,5 @@ public class ClientEventHandler {
             //ClientRegistry.bindTileEntityRenderer(ModTileEntities.PLG_TILE.get(plgType).get(), PlgTileRender::new);
             ItemBlockRenderTypes.setRenderLayer(BlockInit.PLG_BLOCK.get(plgType).get(), RenderType.cutout());
         }
-
-
     }
 }
