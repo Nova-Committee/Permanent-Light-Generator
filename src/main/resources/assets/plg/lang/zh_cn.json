@@ -13,5 +13,6 @@
   "message.plg.ctrl_info": "@f能量已存储: @a%d @4EU",
   "message.plg.shift_info": "@f发电量：@a%d @4EU/t\n@f能量传输速率: @a%d @4EU/t\n@f容量: @a%d @4EU",
   "message.plg.hold_ctrl": "按住 @b@oCtrl @7 获取能量存储信息",
-  "message.plg.hold_shift": "按住 @b@oShift @7 获取详细信息"
+  "message.plg.hold_shift": "按住 @b@oShift @7 获取详细信息",
+  "pack.plg.enthusiast.desc": "来自旧版模组可见光发电机的纹理"
 }

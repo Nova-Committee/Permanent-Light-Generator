@@ -3,12 +3,14 @@ buildscript {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
         maven { url = 'https://maven.minecraftforge.net' }
         maven { url = 'https://maven.parchmentmc.org'}
+        maven { url = 'https://repo.spongepowered.org/maven' }
 
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath group: 'org.parchmentmc', name: 'librarian', version: '1.+'
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
 
     }
 }
@@ -17,6 +19,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: "java"
 apply plugin: "idea"
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: 'org.spongepowered.mixin'
 
 group = 'committee.nova'
 version = '1.16.5-1.0.0'
@@ -102,6 +105,7 @@ repositories {
         name 'Gigaherz'
         url 'https://www.dogforce-games.com/maven/'
     }
+    maven { url = 'https://repo.spongepowered.org/maven' }
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
      flatDir {
          dir 'libs'
@@ -114,6 +118,7 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.22'
     implementation (fileTree('libs') { include '*.jar' })
+    annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
     //compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
     // Real mod deobf dependency examples - these get remapped to your current mappings
     //compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
@@ -138,9 +143,18 @@ jar {
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "cnlimiter",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
         ])
     }
+}
+
+mixin {
+    add sourceSets.main, "mixins.plg.refmap.json"
+    config 'mixins.plg.json'
+
+    debug.verbose = true
+    debug.export = true
+
 }
 
 jar.finalizedBy('reobfJar')
