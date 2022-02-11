@@ -1,8 +1,8 @@
 {
   "parent": "block/cube_bottom_top",
   "textures": {
-    "side": "plg:blocks/generator/cepermanentlight532480_side",
-    "bottom": "plg:blocks/generator/cepermanentlight532480_bottom",
+    "side": "plg:blocks/generator/pl_side",
+    "bottom": "plg:blocks/generator/pl_bottom",
     "top": "plg:blocks/generator/cepermanentlight532480_top"
   }
 }

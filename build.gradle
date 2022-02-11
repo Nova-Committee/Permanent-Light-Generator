@@ -19,7 +19,7 @@ apply plugin: "idea"
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 group = 'committee.nova'
-version = '1.16.5-1.0.0'
+version = "${version}"
 
 java {
     archivesBaseName = 'PermanentLightGenerator-forge'
@@ -114,7 +114,7 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.22'
     implementation (fileTree('libs') { include '*.jar' })
-    //compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
+    compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
     // Real mod deobf dependency examples - these get remapped to your current mappings
     //compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
