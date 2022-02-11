@@ -13,5 +13,6 @@
   "message.plg.hold_shift": "Hold @b@oShift @7for details",
   "message.plg.hold_ctrl": "Hold @b@oCtrl @7for energy info",
   "message.plg.shift_info": "@fGeneration: @a%d @4EU/t\n@fTransfer: @a%d @4EU/t\n@fCapacity: @a%d @4EU",
-  "message.plg.ctrl_info": "@EU stored: @a%d @4EU"
+  "message.plg.ctrl_info": "@EU stored: @a%d @4EU",
+  "pack.plg.enthusiast.desc": "Legacy textures from VisibleRay Generator"
 }
