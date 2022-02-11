@@ -9,17 +9,3 @@ authors = "cnlimiter, Tapio"
 description = '''
 Adding lightweight but effective generators for IC2 and other tech mods' appliances
 '''
-[[dependencies.plg]] #optional
-# the modid of the dependency
-modId = "forge" #mandatory
-mandatory = true #mandatory
-versionRange = "[36,)" #mandatory
-ordering = "NONE"
-side = "BOTH"
-[[dependencies.plg]]
-modId = "minecraft"
-mandatory = true
-# This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange = "[1.16.5,1.17)"
-ordering = "NONE"
-side = "BOTH"

@@ -18,7 +18,6 @@ public class Plg {
         ModItems.init();
         ModTileEntities.init();
         PacketHandler.init();
-
         MinecraftForge.EVENT_BUS.register(this);
     }
 }
