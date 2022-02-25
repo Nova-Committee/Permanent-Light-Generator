@@ -3,14 +3,12 @@ buildscript {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
         maven { url = 'https://maven.minecraftforge.net' }
         maven { url = 'https://maven.parchmentmc.org'}
-        maven { url = 'https://repo.spongepowered.org/maven' }
 
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath group: 'org.parchmentmc', name: 'librarian', version: '1.+'
-        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
 
     }
 }
@@ -19,7 +17,6 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: "java"
 apply plugin: "idea"
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
-apply plugin: 'org.spongepowered.mixin'
 
 group = 'committee.nova'
 version = "${version}"
@@ -147,13 +144,5 @@ jar {
     }
 }
 
-mixin {
-    add sourceSets.main, "mixins.plg.refmap.json"
-    config 'mixins.plg.json'
-
-    debug.verbose = true
-    debug.export = true
-
-}
 
 jar.finalizedBy('reobfJar')
