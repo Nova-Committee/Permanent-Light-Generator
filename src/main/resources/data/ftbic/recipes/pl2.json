@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#F#",
+    "FGF",
+    "#F#"
+  ],
+  "key": {
+    "#": {
+      "item": "ftbic:carbon_plate"
+    },
+    "F": {
+      "item": "ftbic:mv_solar_panel"
+    },
+    "G": {
+      "item": "minecraft:glowstone"
+    }
+  },
+  "result": {
+    "item": "plg:pl2",
+    "count": 1
+  }
+}

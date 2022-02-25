@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#P#",
+    "P P",
+    "#P#"
+  ],
+  "key": {
+    "#": {
+      "item": "ftbic:carbon_plate"
+    },
+    "P": {
+      "item": "plg:pl2048"
+    }
+  },
+  "result": {
+    "item": "plg:pl8192",
+    "count": 1
+  }
+}

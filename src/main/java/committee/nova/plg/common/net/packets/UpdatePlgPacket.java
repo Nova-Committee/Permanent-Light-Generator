@@ -3,10 +3,12 @@ package committee.nova.plg.common.net.packets;
 import committee.nova.plg.common.net.IPacket;
 import committee.nova.plg.common.tiles.PlgTileEntity;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -25,15 +27,13 @@ public class UpdatePlgPacket extends IPacket {
     private final int currentEnergy;
     private final int currentProduction;
 
-    public UpdatePlgPacket(PacketBuffer buf)
-    {
+    public UpdatePlgPacket(PacketBuffer buf) {
         pos = buf.readBlockPos();
         currentEnergy = buf.readInt();
         currentProduction = buf.readInt();
     }
 
-    public UpdatePlgPacket(BlockPos pos, int currentEnergy, int currentProduction)
-    {
+    public UpdatePlgPacket(BlockPos pos, int currentEnergy, int currentProduction) {
         this.pos = pos;
         this.currentEnergy = currentEnergy;
         this.currentProduction = currentProduction;
@@ -46,10 +46,11 @@ public class UpdatePlgPacket extends IPacket {
         buffer.writeInt(currentProduction);
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            final World world = Minecraft.getInstance().level;
+            final ClientWorld world = Minecraft.getInstance().level;
             if (world != null && world.isLoaded(pos)) {
                 TileEntity te = world.getBlockEntity(pos);
                 if (te instanceof PlgTileEntity) {
