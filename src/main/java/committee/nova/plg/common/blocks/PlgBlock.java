@@ -14,6 +14,7 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootContext;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -32,6 +33,7 @@ import net.minecraftforge.energy.IEnergyStorage;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -62,10 +64,10 @@ public class PlgBlock extends Block implements IWaterLoggable {
         return type;
     }
 
-
+    @Nonnull
     @Override
-    public ActionResultType use(BlockState pState, World pLevel, BlockPos pPos, PlayerEntity pPlayer, Hand pHand, BlockRayTraceResult pHit) {
-        if(!pLevel.isClientSide) {
+    public ActionResultType use(@Nonnull BlockState pState, World pLevel, @Nonnull BlockPos pPos, @Nonnull PlayerEntity pPlayer, @Nonnull Hand pHand, @Nonnull BlockRayTraceResult pHit) {
+        if (!pLevel.isClientSide) {
             //使用扳手
             if (pPlayer.isCrouching()) {
                 if (pPlayer.getMainHandItem().getItem().getTags().contains(WRENCH)) {
@@ -83,14 +85,13 @@ public class PlgBlock extends Block implements IWaterLoggable {
     }
 
     @Override
-    public void playerDestroy(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, TileEntity te, ItemStack stack)
-    {
+    public void playerDestroy(@Nonnull World worldIn, @Nonnull PlayerEntity player, @Nonnull BlockPos pos, @Nonnull BlockState state, TileEntity te, @Nonnull ItemStack stack) {
         super.playerDestroy(worldIn, player, pos, state, te, stack);
         worldIn.removeBlock(pos, false);
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable IBlockReader pLevel, List<ITextComponent> pTooltip, ITooltipFlag pFlag) {
+    public void appendHoverText(ItemStack pStack, @Nullable IBlockReader pLevel, @Nonnull List<ITextComponent> pTooltip, @Nonnull ITooltipFlag pFlag) {
         final CompoundNBT compoundnbt = pStack.getTagElement("BlockEntityTag");
         final int energy = (compoundnbt != null && compoundnbt.contains("energy")) ? compoundnbt.getCompound("energy").getInt("value") : 0;
 
@@ -101,8 +102,7 @@ public class PlgBlock extends Block implements IWaterLoggable {
     @SuppressWarnings("deprecation")
     @Nonnull
     @Override
-    public FluidState getFluidState(BlockState state)
-    {
+    public FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
@@ -139,15 +139,18 @@ public class PlgBlock extends Block implements IWaterLoggable {
         final ItemStack itemStack = new ItemStack(this);
 
         final PlgTileEntity localTileEntity = (PlgTileEntity) worldIn.getBlockEntity(pos);
+        if (localTileEntity == null) {
+            return;
+        }
         final int internalEnergy = localTileEntity.getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
         if (internalEnergy > 0) {
-            CompoundNBT energyValue = new CompoundNBT();
+            final CompoundNBT energyValue = new CompoundNBT();
             energyValue.putInt("value", internalEnergy);
 
-            CompoundNBT energy = new CompoundNBT();
+            final CompoundNBT energy = new CompoundNBT();
             energy.put("energy", energyValue);
 
-            CompoundNBT root = new CompoundNBT();
+            final CompoundNBT root = new CompoundNBT();
             root.put("BlockEntityTag", energy);
             itemStack.setTag(root);
         }
@@ -160,5 +163,9 @@ public class PlgBlock extends Block implements IWaterLoggable {
         worldIn.addFreshEntity(entityItem);
     }
 
-
+    @Nonnull
+    @Override
+    public List<ItemStack> getDrops(@Nonnull BlockState state, @Nonnull LootContext.Builder builder) {
+        return Collections.singletonList(new ItemStack(this, 1));
+    }
 }
