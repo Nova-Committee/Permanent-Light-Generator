@@ -1,6 +1,6 @@
 package committee.nova.plg.common.utils.energy;
 
-public class Power {
+public record Power(int level, int production) {
     public static final Power DefaultPower = new Power(0, 1);
 
     /**
@@ -19,14 +19,6 @@ public class Power {
      * Extreme Voltage	| 超高圧
      */
     public static final int EV = 2048;
-
-    private final int level;
-    private final int production;
-
-    public Power(final int level, final int production) {
-        this.level = level;
-        this.production = production;
-    }
 
     /**
      * 総電力 → 電圧 (IC2 exp) {1=LV, 2=MV, 3=HV, 4=EV, 5=EV}

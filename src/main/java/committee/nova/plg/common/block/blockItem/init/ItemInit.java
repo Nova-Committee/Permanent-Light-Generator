@@ -1,7 +1,7 @@
 package committee.nova.plg.common.block.blockItem.init;
 
 import committee.nova.plg.PLG;
-import committee.nova.plg.client.creativeTab.init.TabInit;
+import committee.nova.plg.common.tab.init.TabInit;
 import committee.nova.plg.common.block.base.PLGType;
 import committee.nova.plg.common.block.init.BlockInit;
 import net.minecraft.world.item.BlockItem;

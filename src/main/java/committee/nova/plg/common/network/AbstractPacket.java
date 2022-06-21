@@ -5,10 +5,8 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public abstract class IPacket {
-
-
-    public IPacket() {
+public abstract class AbstractPacket {
+    public AbstractPacket() {
     }
 
     public abstract void toBytes(FriendlyByteBuf buffer);

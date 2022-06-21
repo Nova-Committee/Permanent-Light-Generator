@@ -3,13 +3,16 @@ package committee.nova.plg.common.block.base;
 import committee.nova.plg.common.blockEntity.base.PLGBlockEntity;
 import committee.nova.plg.common.utils.FormatUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -37,8 +40,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class PLGBlock extends Block implements EntityBlock, SimpleWaterloggedBlock {
-
-    private static final ResourceLocation WRENCH = new ResourceLocation("forge", "wrench");//通用扳手
+    private static final TagKey<Item> WRENCH = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "wrench"));//通用扳手
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;//含水方块？
     private final PLGType type;//种类
 
@@ -63,7 +65,7 @@ public class PLGBlock extends Block implements EntityBlock, SimpleWaterloggedBlo
         if (!pLevel.isClientSide) {
             //使用扳手
             if (pPlayer.isCrouching()) {
-                if (pPlayer.getMainHandItem().getItem().getTags().contains(WRENCH)) {
+                if (pPlayer.getMainHandItem().is(WRENCH)) {
                     dismantleBlock(pLevel, pPos);
                     return InteractionResult.SUCCESS;
                 }
