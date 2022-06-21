@@ -1,4 +1,4 @@
-package committee.nova.plg.common.tab.init;
+package committee.nova.plg.client.creativeTab.init;
 
 import committee.nova.plg.PLG;
 import committee.nova.plg.common.block.base.PLGType;
@@ -11,7 +11,8 @@ import javax.annotation.Nonnull;
 public class TabInit extends CreativeModeTab {
     public static final TabInit INSTANCE = new TabInit();
 
-    protected TabInit() {
+
+    public TabInit() {
         super(PLG.MODID);
     }
 
@@ -20,4 +21,5 @@ public class TabInit extends CreativeModeTab {
     public ItemStack makeIcon() {
         return ItemInit.PLG_ITEM.get(PLGType.PermanentLight532480).get().getDefaultInstance();
     }
+
 }

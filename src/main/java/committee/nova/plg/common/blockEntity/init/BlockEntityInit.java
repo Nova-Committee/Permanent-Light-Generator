@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BlockEntityInit {
+
     public static final Map<PLGType, RegistryObject<BlockEntityType<PLGBlockEntity>>> PLG_TILE = new HashMap<>();
     private static final DeferredRegister<BlockEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, PLG.MODID);
 
@@ -27,4 +28,6 @@ public class BlockEntityInit {
             PLG_TILE.put(plgType, TILES.register(plgType.getName(), () -> BlockEntityType.Builder.of((BlockPos pos, BlockState state) -> new PLGBlockEntity(plgType, pos, state), BlockInit.PLG_BLOCK.get(plgType).get()).build(DSL.remainderType())));
         }
     }
+
+
 }

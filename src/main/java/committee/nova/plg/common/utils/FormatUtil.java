@@ -4,6 +4,7 @@ import committee.nova.plg.common.block.base.PLGType;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -63,6 +64,6 @@ public class FormatUtil {
         final String translated = COMPILE.matcher(I18n.get(key, parameters)).replaceAll("\u00a7");
         final String[] formatted = translated.split("\n");
         for (String line : formatted)
-            tooltip.add(Component.translatable(line));
+            tooltip.add(new TranslatableComponent(line));
     }
 }

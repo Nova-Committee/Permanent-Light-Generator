@@ -1,32 +1,10 @@
-modLoader="javafml" #mandatory
-loaderVersion="[41,)"
-license="AGPL v3"
+modLoader = "javafml"
+loaderVersion = "[38,)"
+license = "AGPL v3"
 [[mods]]
-modId="plg" #mandatory
-version="${file.jarVersion}" #mandatory
-displayName="Permanent Light Generator" #mandatory
-authors="MikhailTapio, pkstDev"
-description='''
-Solar generators packed up are not enough.
-
-This mod adds a series of Permanent Light Generators that can generate FE eternally.
+modId = "plg"
+version = "${file.jarVersion}"
+displayName = "Permanent Light Generator"
+authors = "cnlimiter, Tapio"
+description = '''
 '''
-[[dependencies.plg]] #optional
-    # the modid of the dependency
-    modId="forge" #mandatory
-    # Does this dependency have to exist - if not, ordering below must be specified
-    mandatory=true #mandatory
-    # The version range of the dependency
-    versionRange="[41,)" #mandatory
-    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
-    ordering="NONE"
-    # Side this dependency is applied on - BOTH, CLIENT or SERVER
-    side="BOTH"
-# Here's another dependency
-[[dependencies.plg]]
-    modId="minecraft"
-    mandatory=true
-# This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[1.19,1.20)"
-    ordering="NONE"
-    side="BOTH"
