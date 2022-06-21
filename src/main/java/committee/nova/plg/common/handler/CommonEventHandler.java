@@ -1,8 +1,7 @@
 package committee.nova.plg.common.handler;
 
 import committee.nova.plg.PLG;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.server.packs.repository.Pack;
@@ -22,10 +21,10 @@ public class CommonEventHandler {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             final Path resourcePath = ModList.get().getModFileById(PLG.MODID).getFile().findResource("packs/enthusiast_art");
             final PathResourcePack pack = new PathResourcePack(ModList.get().getModFileById(PLG.MODID).getFile().getFileName() + ":" + resourcePath, resourcePath);
-            final PackMetadataSection metadataSection = new PackMetadataSection(new TranslatableComponent("pack.plg.enthusiast.desc"), 8);
+            final PackMetadataSection metadataSection = new PackMetadataSection(Component.translatable("pack.plg.enthusiast.desc"), 8);
             event.addRepositorySource((packConsumer, packConstructor) ->
                     packConsumer.accept(packConstructor.create(
-                            "builtin/visible_ray_generator_legacy_art", new TextComponent("Enthusiast's Art."), false,
+                            "builtin/visible_ray_generator_legacy_art", Component.literal("Enthusiast's Art."), false,
                             () -> pack, metadataSection, Pack.Position.TOP, PackSource.BUILT_IN, false)));
         }
     }

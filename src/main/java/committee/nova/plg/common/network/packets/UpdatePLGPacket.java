@@ -1,7 +1,7 @@
 package committee.nova.plg.common.network.packets;
 
 import committee.nova.plg.common.blockEntity.base.PLGBlockEntity;
-import committee.nova.plg.common.network.IPacket;
+import committee.nova.plg.common.network.AbstractPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
@@ -13,9 +13,7 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class UpdatePLGPacket extends IPacket {
-
-
+public class UpdatePLGPacket extends AbstractPacket {
     private final BlockPos pos;
     private final int currentEnergy;
     private final int currentProduction;
