@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class BlockEntityInit {
     public static final Map<PLGType, RegistryObject<BlockEntityType<PLGBlockEntity>>> PLG_TILE = new HashMap<>();
-    private static final DeferredRegister<BlockEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, PLG.MODID);
+    private static final DeferredRegister<BlockEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, PLG.MODID);
 
     public static void init() {
         TILES.register(FMLJavaModLoadingContext.get().getModEventBus());

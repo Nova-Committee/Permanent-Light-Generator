@@ -11,8 +11,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.network.PacketDistributor;
 
@@ -44,11 +44,11 @@ public class PLGBlockEntity extends BlockEntity {
     }
 
     private int getMaxEnergy() {
-        return getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getMaxEnergyStored).orElse(0);
+        return getCapability(ForgeCapabilities.ENERGY).map(IEnergyStorage::getMaxEnergyStored).orElse(0);
     }
 
     public int getEnergy() {
-        return getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
+        return getCapability(ForgeCapabilities.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
     }
 
     @Nonnull
@@ -85,7 +85,7 @@ public class PLGBlockEntity extends BlockEntity {
                 if (facing != Direction.UP) {
                     final BlockEntity tileEntity = level.getBlockEntity(worldPosition.relative(facing));
                     if (tileEntity != null) {
-                        tileEntity.getCapability(CapabilityEnergy.ENERGY, facing.getOpposite()).ifPresent(handler -> {
+                        tileEntity.getCapability(ForgeCapabilities.ENERGY, facing.getOpposite()).ifPresent(handler -> {
                             if (handler.canReceive()) {
                                 final int received = handler.receiveEnergy(Math.min(capacity.get(), maxEnergyOutput), false);
                                 capacity.addAndGet(-received);
@@ -101,7 +101,7 @@ public class PLGBlockEntity extends BlockEntity {
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, Direction facing) {
-        if (capability == CapabilityEnergy.ENERGY && facing != Direction.UP) {
+        if (capability == ForgeCapabilities.ENERGY && facing != Direction.UP) {
             return energy.cast();
         }
         return super.getCapability(capability, facing);

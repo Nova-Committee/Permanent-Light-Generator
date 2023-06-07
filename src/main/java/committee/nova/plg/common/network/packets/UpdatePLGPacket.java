@@ -1,14 +1,12 @@
 package committee.nova.plg.common.network.packets;
 
-import committee.nova.plg.common.blockEntity.base.PLGBlockEntity;
+import committee.nova.plg.client.network.ClientNetworkUtils;
 import committee.nova.plg.common.network.AbstractPacket;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -40,19 +38,7 @@ public class UpdatePLGPacket extends AbstractPacket {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            final ClientLevel world = Minecraft.getInstance().level;
-            if (world == null) {
-                return;
-            }
-            if (world.isLoaded(pos)) {
-                final BlockEntity te = world.getBlockEntity(pos);
-                if (te instanceof PLGBlockEntity solar) {
-                    solar.energyClient = currentEnergy;
-                    solar.energyProductionClient = currentProduction;
-                }
-            }
-        });
+        ctx.get().enqueueWork(() -> DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> ClientNetworkUtils.updatePlg(pos, currentEnergy, currentProduction)));
         ctx.get().setPacketHandled(true);
     }
 }

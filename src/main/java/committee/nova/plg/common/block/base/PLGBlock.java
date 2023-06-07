@@ -32,7 +32,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.energy.IEnergyStorage;
 
 import javax.annotation.Nonnull;
@@ -128,7 +128,7 @@ public class PLGBlock extends Block implements EntityBlock, SimpleWaterloggedBlo
         if (localTileEntity == null) {
             return;
         }
-        final int internalEnergy = localTileEntity.getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
+        final int internalEnergy = localTileEntity.getCapability(ForgeCapabilities.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
         if (internalEnergy > 0) {
             final CompoundTag energyValue = new CompoundTag();
             energyValue.putInt("value", internalEnergy);
